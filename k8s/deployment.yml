@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-portfolio
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-portfolio
+  template:
+    metadata:
+      labels:
+        app: devops-portfolio
+    spec:
+      containers:
+      - name: devops-portfolio
+        image: ashaolu/devops-portfolio:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
