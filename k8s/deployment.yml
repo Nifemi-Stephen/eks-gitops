@@ -13,8 +13,30 @@ spec:
         app: devops-portfolio
     spec:
       containers:
-      - name: devops-portfolio
-        image: ashaolu/devops-portfolio:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
+        - name: devops-portfolio
+          image: ashaolu/devops-portfolio:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 3
