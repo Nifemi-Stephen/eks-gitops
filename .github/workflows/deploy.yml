@@ -36,7 +36,7 @@ jobs:
           git config --global user.email "ashasteven1@gmail.com"
           git config --global user.name "nifemi stephen"
 
-          git add helm/devops-portfolio/values.yml
+          git add helm/values.yml
 
           git commit -m "Update iamge tag to ${{ github.sha }}" || echo "No changes to commit"
 
