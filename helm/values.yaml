@@ -2,4 +2,4 @@
 image:
   repository: ashaolu/devops-portfolio
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "9e2ffae72b750d73b759d9c27cf8e899feae6ac8"
+  tag: "latest"
