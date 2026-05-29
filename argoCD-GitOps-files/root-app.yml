@@ -9,9 +9,9 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/Nifemi-Stephen/devops-website.git/argoCD-GitOps-files
-    targetRevision: HEAD
-    path: infrastructure
+    repoURL: https://github.com/Nifemi-Stephen/devops-website.git
+    targetRevision: main
+    path: argoCD-GitOps-files/infrastructure
 
   destination:
     server: https://kubernetes.default.svc
