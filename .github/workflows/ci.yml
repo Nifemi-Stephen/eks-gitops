@@ -1,0 +1,48 @@
+name: CI-pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "app-and-dockerfile"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: "${{ secrets.DOCKER_USERNAME }}"
+          password: "${{ secrets.DOCKER_PASSWORD }}"
+
+      - name: Build image
+        run: |
+          docker build -t ashaolu/devops-portfolio:${{ github.sha }} ./app-and-dockerfile
+
+      - name: Push image
+        run: |
+          docker push ashaolu/devops-portfolio:${{ github.sha }}
+
+      - name: update helm values.yaml image tag
+        run: |
+          sed -i 's/tag:.*/tag: "${{ github.sha }}"/' helm/values.yaml
+
+      - name: commit Updated values.yaml
+        run: |
+          git config --global user.email "ashasteven1@gmail.com"
+          git config --global user.name "nifemi stephen"
+
+          git add helm/values.yaml
+
+          git commit -m "Update iamge tag to ${{ github.sha }}" || echo "No changes to commit"
+
+          git push
