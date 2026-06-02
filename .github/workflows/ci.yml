@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "app-and-dockerfile"
+      - "app-and-dockerfile/"
 
 permissions:
   contents: write
