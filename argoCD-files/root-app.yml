@@ -9,9 +9,9 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/Nifemi-Stephen/devops-website.git
+    repoURL: https://github.com/your-repo-name.git #your github repo
     targetRevision: main
-    path: argoCD-files/infrastructure
+    path: #path/folder in the repo where the file is saved
 
   destination:
     server: https://kubernetes.default.svc

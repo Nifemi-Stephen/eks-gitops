@@ -1,5 +1,5 @@
 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
 image:
-  repository: your-name/repo-name
+  repository: "your-image-repository"
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "a2401fea0ceee36e121e21fba80f04206459d891"
+  tag: "your-tag"

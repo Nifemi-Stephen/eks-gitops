@@ -215,13 +215,25 @@ cd terraform-eks-cluster-files
 #}providers #in the providers.tf
 #needs to be commented out before runnung terraform apply so the infrastructure can be created first
 #and uncommented so terraform apply is ran again to install argo CD on the cluster
-
+```
+```text
 terraform init
-
+```
+```text
 terraform plan
+```
 
+<p align="center">
+  <img src="img-docs/terraform-plan-result.png" alt="Architecture Diagram" width="100%">
+</p>
+
+```text
 terraform apply
 ```
+<p align="center">
+  <img src="img-docs/terraform-apply-result.png" alt="Architecture Diagram" width="100%">
+</p>
+
 
 ---
 
@@ -239,6 +251,9 @@ Verify:
 ```bash
 kubectl get nodes
 ```
+<p align="center">
+  <img src="img-docs/kubectl-get-nodes-result.png" alt="Architecture Diagram" width="100%">
+</p>
 
 ---
 
@@ -262,6 +277,9 @@ Verify:
 ```bash
 kubectl get pods -n argocd
 ```
+<p align="center">
+  <img src="img-docs/all-argocd-pods.png" alt="Architecture Diagram" width="100%">
+</p>
 
 ---
 
@@ -270,6 +288,9 @@ kubectl get pods -n argocd
 ```bash
 kubectl apply -f argoCD-files/root-app.yaml
 ```
+<p align="center">
+  <img src="img-docs/app-deployment.png" alt="Architecture Diagram" width="100%">
+</p>
 
 Verify:
 
@@ -293,12 +314,18 @@ Port-forward:
 kubectl port-forward svc/argocd-server \
 -n argocd 8080:443
 ```
+<p align="center">
+  <img src="img-docs/argocd-ui-traffic.png" alt="Architecture Diagram" width="100%">
+</p>
 
 Access:
 
 ```text
 https://localhost:8080
 ```
+<p align="center">
+  <img src="img-docs/argocd-ui.png" alt="Architecture Diagram" width="100%">
+</p>
 
 ---
 
@@ -348,6 +375,9 @@ Argo CD Sync
         ↓
 Deploy to EKS
 ```
+<p align="center">
+  <img src="img-docs/ci-build-success.png" alt="Architecture Diagram" width="100%">
+</p>
 
 ---
 
@@ -364,6 +394,9 @@ Verify workloads:
 ```bash
 kubectl get pods -A
 ```
+<p align="center">
+  <img src="img-docs/all-pods.png" alt="Architecture Diagram" width="100%">
+</p>
 
 Verify services:
 
@@ -384,3 +417,20 @@ kubectl get infrastructure -n argocd
 ```
 
 ---
+## cleanup
+#delete all resources deployed with argocd
+```text
+kubectl delete applications --all -n argocd
+```
+#delete namespaces
+```text
+kubectl delete namespace argocd
+```
+#destroy infrastructure
+```text
+terraform destroy -auto-approve
+```
+#Remove kubectl-config context
+```text
+kubectl config get-contexts
+kubectl config delete-context <context-name>

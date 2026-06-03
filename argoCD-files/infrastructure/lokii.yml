@@ -2,21 +2,22 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: myapp
+  name: loki
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-wave: "3"
+
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/your-repo-name.git #your github repo
-    targetRevision: HEAD
-    path: #path/folder in the repo where the main application file is saved
+    repoURL: https://grafana.github.io/helm-charts
+    chart: loki-stack
+    targetRevision: 2.10.2
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: app #namespace of your choice
+    namespace: logging
 
   syncPolicy:
     automated:
