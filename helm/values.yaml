@@ -2,4 +2,4 @@
 image:
   repository: "your-image-repository"
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "a2401fea0ceee36e121e21fba80f04206459d891"
+  tag: "your-tag"
