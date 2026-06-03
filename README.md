@@ -6,6 +6,16 @@ A production-grade infrastructure-as-code project utilizing Terraform to provisi
 
 This project demonstrates a complete cloud-native GitOps deployment platform on AWS using Terraform, Kubernetes, GitHub Actions, Helm, and Argo CD. The platform automates infrastructure provisioning, application deployment, monitoring, logging, ingress management, and TLS certificate provisioning. The entire deployment lifecycle follows GitOps principles, where Git serves as the single source of truth for both infrastructure and application delivery.
 
+## 🚀 Automated GitOps CI/CD Pipeline
+```text
+This project implements a fully automated, zero-downtime GitOps continuous integration and deployment workflow utilizing Git as the single source of truth:
+```
+
++ **Continuous Integration**: Pushing updates to application code or the **Dockerfile** triggers the CI pipeline.
++ **Automated Manifest Updates**: The pipeline builds the new image and automatically updates the image tag within the Helm **values.yaml** file.
++ **GitOps CD Deployment**: ArgoCD detects the repository update and automatically synchronizes the new state to the Amazon EKS cluster.
++ **Zero Downtime**: Upgrades are rolled out smoothly with zero manual intervention and zero application downtime.
+
 # Key Features:
 
 The entire AWS architecture, comprising the VPC, subnets, EKS cluster, node groups and ArgoCD is provisioned using Terraform, entirely eliminating manual AWS console configuration. This infrastructure as code strategy guarantees:
