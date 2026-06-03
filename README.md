@@ -91,7 +91,7 @@ The entire AWS architecture, comprising the VPC, subnets, EKS cluster, node grou
 └───────────────┘ └───────────────┘
 ```
 <p align="center">
-  <img src="img-docs/app-infra-architecture.png" alt="Architecture Diagram" width="100%">
+  <img src="img-docs/architecture.png" alt="Architecture Diagram" width="100%">
 </p>
 
 ```text
